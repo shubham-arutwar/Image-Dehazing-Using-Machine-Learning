@@ -3,100 +3,7 @@
   <head>
     <title>My App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      /* Reset default margin and padding */
-      * {
-        margin: 0;
-        padding: 0;
-      }
-
-      /* Set background color and font for the entire page */
-      body {
-        background-color: #f2f2f2;
-        font-family: Arial, sans-serif;
-      }
-
-      /* Style the heading */
-      h1 {
-        text-align: center;
-        margin-top: 50px;
-        font-size: 36px;
-        color: #333;
-      }
-
-      /* Style the form */
-      form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-      }
-
-      /* Style the file input container */
-      .file-upload {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        background-color: #fff;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Style the file input field */
-      .file-upload input[type="file"] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-      }
-
-      /* Style the "Choose file" button */
-      .file-upload .file-select {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-
-      /* Style the "Choose file" button on hover */
-      .file-upload .file-select:hover {
-        background-color: #3e8e41;
-      }
-
-      /* Style the file name display */
-      .file-upload .file-name {
-        margin-left: 10px;
-        color: #999;
-        font-size: 14px;
-      }
-
-      /* Style the upload button */
-      button[type="submit"] {
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-
-      /* Style the upload button on hover */
-      button[type="submit"]:hover {
-        background-color: #3e8e41;
-      }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       function showFileName() {
         var fileInput = document.getElementById("file-input");
@@ -106,21 +13,96 @@
     </script>
   </head>
   <body>
-    <h1>Image Dehazer</h1>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div class="file-upload">
-        <label class="file-select">
-          <span>Choose file</span>
-          <input
-            id="file-input"
-            type="file"
-            name="image"
-            onchange="showFileName()"
-          />
-        </label>
-        <div id="file-name"></div>
+    <nav class="bg-White sticky top-0 z-50">
+      <div class="py-3 ">
+        <ul class="flex justify-around">
+          <li class="mr-6">
+            <img class="color-sky-500 h-6" src="https://flowbite.com/docs/images/logo.svg" class="h-6" alt="Tailwind Play" />
+          </li>
+          <ul class="flex justify-center">
+            <li class="mr-6">
+              <a href="#" class="text-sky-500 font-medium hover:text-sky-600">Home</a>
+            </li>
+            <li class="mr-6">
+              <a href="#" class="text-sky-500 hover:text-sky-600">deHaze_Picture</a>
+            </li>
+            <li class="mr-6">
+              <a href="#" class="text-sky-500 hover:text-sky-600">deHaze_Video</a>
+            </li>
+            <li class="mr-6">
+              <a href="#" class="text-sky-500 hover:text-sky-600">About</a>
+            </li>
+          </ul>
+        </ul>
       </div>
-      <button type="submit">Upload</button>
-    </form>
+    </nav>
+    <div class="relative flex min-h-screen flex-col overflow-hidden bg-gray-50 py-6 sm:py-12">
+      <img src="/images/beams.jpg" alt="" class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" />
+      <div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>    
+      <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+        <div class="mx-auto max-w-md space-y-6">
+          <div class="flex flex-row">
+            <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 my-auto" alt="Tailwind Play" />
+            <h1 class="mx-5 mb-2 text-sky-900 underline underline-offset-2 text-2xl font-semibold ">Image dehazer</h1>
+          </div>
+          <div>
+            <div class="space-y-5 text-base leading-7 text-gray-600">
+              <p>An advanced online tool to dehaze images</p>
+              <p class="font-semibold">Please seect an Image to deHaze using Choose File or entering an Image URL</p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="file-upload space-y-5">
+                  <label class="file-select">
+                    <span class="sr-only">Select the file</span>
+                    <input type="file" class="block w-full text-sm text-slate-500
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-sky-50 file:text-sky-700
+                      hover:file:bg-sky-100"
+                      id="file-input"
+                      type="file"
+                      name="image"
+                      onchange="showFileName()"/>
+                  </label>
+                  <button type="submit" class="block w-fit
+                  mr-4 py-2 px-4
+                  rounded-full border-0
+                  text-sm font-semibold
+                  bg-sky-50 text-sky-700
+                  hover:bg-sky-100">Dehaze Uploaded Image</button>
+              </form>
+            </div>
+            <br>
+            <div>
+              <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="file-upload space-y-5">
+                  <label class="block">
+                    <p class="mb-2 ml-3 text-base leading-7 text-gray-600 font-semibold">Enter Image URL</p>
+                    <input class="block w-full py-2 px-4
+                    rounded-full border-sm
+                    text-sm font-semibold
+                    bg-sky-50 text-sky-700
+                    hover:bg-sky-100"
+                    id="link-input"
+                    type="link"
+                    name="image"
+                    onchange="showFileName()"/>
+                  </label>
+                  <button type="submit" class="block w-fit
+                  mr-4 py-2 px-4
+                  rounded-full border-0
+                  text-sm font-semibold
+                  bg-sky-50 text-sky-700
+                  hover:bg-sky-100">Dehaze Image on link</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
   </body>
 </html>
